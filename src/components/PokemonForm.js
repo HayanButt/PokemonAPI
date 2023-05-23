@@ -1,10 +1,29 @@
 import Pokemon from "./Pokemon";
 
-const PokemonForm = () => {
+const PokemonForm = ({pokemonName}) => {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     return ( 
         <>
-            <p>Hello from the form</p>
-            <Pokemon />
+            <h1>Search for a pokemon</h1>
+            <form>
+                <input type="text"/>
+                <button type="submit">Search</button>
+            </form>
+            
         </>
      );
 }
