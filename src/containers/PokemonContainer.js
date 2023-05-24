@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import Pokemon from "../components/Pokemon"
 import PokemonForm from "../components/PokemonForm";
 
 const PokemonContainer = () => {
@@ -10,38 +11,46 @@ const PokemonContainer = () => {
     const [pokemonInfo, setPokemonInfo] = useState({
         name: "",
         img: "",
+        shinyImg: "",
+        id: "",
         hp: "",
         type: "",
+        // type2: ""
 
     });
 
-
+    // if more thn one type: have a p tag with the other type
+    
 
 
     // Fetch the API
     const fetchPokemonAPI = () => {
-        // Fetches infor from the API
+        
+        // Fetches info from the API
         fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
         // Parses to JSON
         .then((response) => response.json())
-        // .then((response) => console.log(response.types[0].type.name))
         // from the information got from the response, save it in pokemonInfo
         .then((response) => setPokemonInfo({
             name: response.name,
-            img: response.sprites.front_default,
+            img: response.sprites.other.home.front_default,
+            shinyImg: response.sprites.other.home.front_shiny,
+            id: response.id,
             hp: response.stats[0].base_stat,
-            type: response.types[0].type.name
+            type: response.types[0].type.name.toUpperCase(),
+            // type2: response.types[1].type.name
         }))
+       
     }
-
-    
 
 
 
     return ( 
         <>
-            <h1>hi from the container</h1>
-            <PokemonForm setPokemonName={setPokemonName} fetchPokemonAPI={fetchPokemonAPI}/>
+            <PokemonForm setPokemonName={setPokemonName} 
+            fetchPokemonAPI={fetchPokemonAPI} 
+            pokemonName={pokemonName} />
+            <Pokemon fetchPokemonAPI={fetchPokemonAPI} pokemonName={pokemonName} pokemonInfo={pokemonInfo}/>
         </>
      );
 }
