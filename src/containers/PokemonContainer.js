@@ -7,38 +7,41 @@ const PokemonContainer = () => {
     // Make states
 
     const [pokemonName, setPokemonName] = useState("");
-    const [type, setType] = useState([]);
+    const [pokemonInfo, setPokemonInfo] = useState({
+        name: "",
+        img: "",
+        hp: "",
+        type: "",
+
+    });
 
 
 
 
     // Fetch the API
-    const fetchPokemonAPI = async () => {
-        const response = await fetch(`https://pokeapi/api/v2/pokemon/${pokemonName}`);
-        console.log(response)
-        
-        
-
-        // Set it to the variable
-        // setPokemonName(pokemonName)
+    const fetchPokemonAPI = () => {
+        // Fetches infor from the API
+        fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+        // Parses to JSON
+        .then((response) => response.json())
+        // .then((response) => console.log(response.types[0].type.name))
+        // from the information got from the response, save it in pokemonInfo
+        .then((response) => setPokemonInfo({
+            name: response.name,
+            img: response.sprites.front_default,
+            hp: response.stats[0].base_stat,
+            type: response.types[0].type.name
+        }))
     }
 
-    useEffect (() => {
-        fetchPokemonAPI();
-    }, [])
-
-
-
-
-
-
+    
 
 
 
     return ( 
         <>
             <h1>hi from the container</h1>
-            <PokemonForm pokemonName={pokemonName}/>
+            <PokemonForm setPokemonName={setPokemonName} fetchPokemonAPI={fetchPokemonAPI}/>
         </>
      );
 }
