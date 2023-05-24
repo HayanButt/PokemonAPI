@@ -1,6 +1,6 @@
 import Pokemon from "./Pokemon";
 
-const PokemonForm = ({fetchPokemonAPI, setPokemonName, pokemonInfo, pokemonChosen, pokemonName}) => {
+const PokemonForm = ({fetchPokemonAPI, setPokemonName, pokemonInfo, pokemonName}) => {
     
     
     

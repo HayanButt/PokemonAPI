@@ -17,7 +17,6 @@ const PokemonContainer = () => {
         type: "",
 
     });
-    const [pokemonChosen, setPokemonChosen] = useState(false)
 
     
 
@@ -38,7 +37,6 @@ const PokemonContainer = () => {
             hp: response.stats[0].base_stat,
             type: response.types[0].type.name.toUpperCase(),
         }))
-        setPokemonChosen(true)
     }
 
     
@@ -52,7 +50,6 @@ const PokemonContainer = () => {
             setPokemonName={setPokemonName} 
             fetchPokemonAPI={fetchPokemonAPI} 
             pokemonInfo={pokemonInfo} 
-            pokemonChose={pokemonChosen}
             pokemonName={pokemonName}
             />
             
