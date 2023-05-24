@@ -1,6 +1,6 @@
 import Pokemon from "./Pokemon";
 
-const PokemonForm = ({fetchPokemonAPI, setPokemonName, pokemonInfo}) => {
+const PokemonForm = ({fetchPokemonAPI, setPokemonName, pokemonInfo, pokemonChosen, pokemonName}) => {
     
     
     
@@ -24,7 +24,7 @@ const PokemonForm = ({fetchPokemonAPI, setPokemonName, pokemonInfo}) => {
     
     return ( 
         <>
-            <h1>Search for a pokemon</h1>
+            <h1>Pokemon search</h1>
             <form onSubmit={handleSubmit}>
                 <input type="text" onChange={(event) => {setPokemonName(event.target.value.toLowerCase())}}/>
                 <button type="submit" onClick={handleSearch}>Search</button>
