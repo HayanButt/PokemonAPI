@@ -2,7 +2,13 @@
   text-align: center;
 }
 
+.wrapper {
+  margin: 16px;
+}
+
+
 
 img {
   height: 200px;
 }
+

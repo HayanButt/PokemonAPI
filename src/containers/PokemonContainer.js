@@ -15,11 +15,9 @@ const PokemonContainer = () => {
         id: "",
         hp: "",
         type: "",
-        // type2: ""
 
     });
 
-    // if more thn one type: have a p tag with the other type
     
 
 
@@ -38,19 +36,27 @@ const PokemonContainer = () => {
             id: response.id,
             hp: response.stats[0].base_stat,
             type: response.types[0].type.name.toUpperCase(),
-            // type2: response.types[1].type.name
         }))
-       
     }
+
+    
+
 
 
 
     return ( 
         <>
-            <PokemonForm setPokemonName={setPokemonName} 
+            <PokemonForm 
+            setPokemonName={setPokemonName} 
             fetchPokemonAPI={fetchPokemonAPI} 
-            pokemonName={pokemonName} />
-            <Pokemon fetchPokemonAPI={fetchPokemonAPI} pokemonName={pokemonName} pokemonInfo={pokemonInfo}/>
+            pokemonInfo={pokemonInfo} 
+            />
+            
+            <Pokemon 
+            fetchPokemonAPI={fetchPokemonAPI} 
+            pokemonName={pokemonName} 
+            pokemonInfo={pokemonInfo} 
+            />
         </>
      );
 }
